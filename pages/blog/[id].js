@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styles from '../../styles/Home.module.css'
 import Image from 'next/image'
 
-const Blog = ({ blog }) => {
+export default function Blog({ blog}) {
   return (
     <div className={styles.container}>
         <h1>{blog.title}</h1>
@@ -32,6 +32,3 @@ export const getServerSideProps = async (context) => {
 //   return { paths, fallback: false }
 
 // };
-
-
-export default Blog;
