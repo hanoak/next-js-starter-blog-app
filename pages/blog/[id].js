@@ -13,7 +13,7 @@ export default function Blog({ blog}) {
   )
 }
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const result = await fetch(`http://localhost:3000/api/blogs/${context.params.id}`);
   const blog = await result.json();
   return {
@@ -23,12 +23,12 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-// export const getStaticPaths = async () => {
+export const getStaticPaths = async () => {
 
-//   const result = await fetch(`http://localhost:3000/api/blogs/`);
-//   const blogs = await result.json();
-//   const paths = blogs.map(blog => ({params: {id: blog.id}}));
+  const result = await fetch(`http://localhost:3000/api/blogs/`);
+  const blogs = await result.json();
+  const paths = blogs.map(blog => ({params: {id: blog.id}}));
 
-//   return { paths, fallback: false }
+  return { paths, fallback: false }
 
-// };
+};
